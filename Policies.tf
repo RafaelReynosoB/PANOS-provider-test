@@ -16,8 +16,8 @@ provider "panos" {
 
 
 ##Policies Rules
-resource "panos_security_policy" "rule1" {    
-    depends_on = [panos_address_object.custom_fqdn_objects, panos_address_object.custom_ip_objects]
+resource "panos_security_policy" "security_rules" {    
+
     rule {
         name = "Any-to-Google"
         source_zones = ["any"]
@@ -37,7 +37,7 @@ resource "panos_security_policy" "rule1" {
         source_addresses = [var.object_group[0]]
         source_users = ["any"]
         destination_zones = ["untrust"]
-        destination_addresses = [panos_address_group.RFC_1918.name]
+        destination_addresses = [panos_address_group.rfc_1918.name]
         negate_destination = true
         applications = ["any"]
         services = ["application-default"]
@@ -49,11 +49,11 @@ resource "panos_security_policy" "rule1" {
     rule {
         name = "Untrust-to-Trust"
         source_zones = ["untrust"]
-        source_addresses = [panos_address_group.RFC_1918.name]
+        source_addresses = [panos_address_group.rfc_1918.name]
         negate_source = true
         source_users = ["any"]
         destination_zones = ["trust"]
-        destination_addresses = [panos_address_group.RFC_1918.name]
+        destination_addresses = [panos_address_group.rfc_1918.name]
         applications = ["any"]
         services = ["application-default"]
         categories = ["any"]
@@ -73,6 +73,9 @@ resource "panos_security_policy" "rule1" {
         action = "allow"
         description = "Catch all allow rule configured through Terraform"
     }
+
+    depends_on = [panos_address_object.custom_fqdn_objects, panos_address_object.custom_ip_objects]
+
 }
 
 

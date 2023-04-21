@@ -17,6 +17,7 @@ resource "panos_ldap_profile" "ldap_server" {
         port = 636
     }
 
+
     lifecycle {
         create_before_destroy = true
     }
