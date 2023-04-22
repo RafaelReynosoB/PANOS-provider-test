@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "panos" {
-    hostname = "24.4.113.170"
+    hostname = "73.202.181.176"
     username = var.user1
     password = var.user1_pass
 }
@@ -34,7 +34,7 @@ resource "panos_security_policy" "security_rules" {
     rule {
         name = "Trust-to-Untrust"
         source_zones = ["trust"]
-        source_addresses = [var.object_group[0]]
+        source_addresses = [var.object_group[0]] #=RFC_1918
         source_users = ["any"]
         destination_zones = ["untrust"]
         destination_addresses = [panos_address_group.rfc_1918.name]
