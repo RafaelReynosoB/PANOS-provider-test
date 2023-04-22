@@ -11,12 +11,6 @@ variable "user1_pass"{
     description = "Password for User1"
 }
 
-variable "ip_objects_count"{
-  type        = number
-  description = "Number of IP objects to create in PA-FW"
-  default     = length(var.ip_objects)
-}
-
 
 variable "ip_objects" {
   type        = list(string)
@@ -24,12 +18,6 @@ variable "ip_objects" {
   default     = ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"]
 }
 
-
-variable "fqdn_objects_count"{
-  type        = number
-  description = "Number of FQDN objects to create in PA-FW"
-  default     = 2
-}
 
 variable "fqdn_objects" {
   type        = list(string)

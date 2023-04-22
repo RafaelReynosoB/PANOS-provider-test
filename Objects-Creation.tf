@@ -1,6 +1,6 @@
 ##Creating all IP-Netmask objects through one terraform resource
 resource "panos_address_object" "custom_ip_objects" {
-    count = var.ip_objects_count
+    count = length(var.ip_objects)
     
     name = replace(var.ip_objects[count.index], "/", "_") 
     value = var.ip_objects[count.index] 
@@ -15,10 +15,10 @@ resource "panos_address_object" "custom_ip_objects" {
 
 ##Creating all FQDN objects through one terraform resource
 resource "panos_address_object" "custom_fqdn_objects" {
-    count = var.fqdn_objects_count
+    count = length(var.fqdn_objects)
 
-    name = var.fqdn_objects[count.index]    ##Planing on testing it with a "var.fqdn_objects[*]" to not use the count varible.
-    value = var.fqdn_objects[count.index]   ##Planing on testing it with a "var.fqdn_objects[*]" to not use the count varible.
+    name = var.fqdn_objects[count.index]   
+    value = var.fqdn_objects[count.index]   
     type = "fqdn"
 
     lifecycle {
