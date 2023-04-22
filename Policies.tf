@@ -9,8 +9,6 @@ terraform {
 
 provider "panos" {
     hostname = "73.202.181.176"
-    username = var.user1
-    password = var.user1_pass
 }
 
 

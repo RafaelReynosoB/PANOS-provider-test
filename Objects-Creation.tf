@@ -29,6 +29,22 @@ resource "panos_address_object" "custom_fqdn_objects" {
 
 
 
+##Creating all FQDN objects through one terraform resource
+resource "panos_address_object" "custom_ip_range_objects" {
+    count = length(var.ip_range_objects)
+
+    name = var.ip_range_objects[count.index]   
+    value = var.ip_range_objects[count.index]   
+    type = "ip-range"
+
+    lifecycle {
+        create_before_destroy = true
+    }
+    
+}
+
+
+
 ##Creating Objects Groups
 resource "panos_address_group" "rfc_1918" {
 

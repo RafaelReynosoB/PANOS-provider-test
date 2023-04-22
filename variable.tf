@@ -1,21 +1,28 @@
 
-variable "user1"{
-    type = string
-    sensitive   = true
-    description = "Username used to log into the Palo Alto firewall"
-}
+#variable "user1"{
+ #   type = string
+  #  sensitive   = true
+   # description = "Username used to log into the Palo Alto firewall"
+#}
 
-variable "user1_pass"{
-    type = string
-    sensitive   = true
-    description = "Password for User1"
-}
+#variable "user1_pass"{
+ #   type = string
+  #  sensitive   = true
+   # description = "Password for User1"
+#}
 
 
 variable "ip_objects" {
   type        = list(string)
   description = "All IP-Netmask objects to be created"
   default     = ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"]
+}
+
+
+variable "ip_range_objects" {
+  type        = list(string)
+  description = "All IP Range objects to be created"
+  default     = ["10.0.0.25-10.0.0.35"]
 }
 
 
