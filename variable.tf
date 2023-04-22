@@ -14,7 +14,7 @@ variable "user1_pass"{
 variable "ip_objects_count"{
   type        = number
   description = "Number of IP objects to create in PA-FW"
-  default     = 3
+  default     = length(var.ip_objects)
 }
 
 
