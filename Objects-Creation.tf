@@ -1,9 +1,8 @@
 ##Creating all IP-Netmask objects through one terraform resource
 resource "panos_address_object" "custom_ip_objects" {
-    count = var.ip_objects_count
     
-    name = replace(var.ip_objects[count.index], "/", "_")       ##Planing on testing it with a "var.ip_objects[*]" to not use the count varible.
-    value = var.ip_objects[count.index]     ##Planing on testing it with a "var.ip_objects[*]" to not use the count varible.
+    name = replace(var.ip_objects[*], "/", "_") 
+    value = var.ip_objects[*] 
     type = "ip-netmask"
 
     lifecycle {
