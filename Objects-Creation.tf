@@ -1,3 +1,8 @@
+##OBJECTS DEFINITION
+
+
+
+##OBJECTS CREATION
 ##Creating all IP-Netmask objects through one terraform resource
 resource "panos_address_object" "custom_ip_objects" {
     count = length(var.ip_objects)
