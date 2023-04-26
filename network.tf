@@ -51,12 +51,9 @@ resource "panos_ethernet_interface" "l3_interface" {
 
 
 resource "panos_zone" "l3_zone1" {
-
     name = var.l3_zone1
     mode = "layer3"
-    interfaces = [
-        var.l3_zone1_eth[0],   
-    ]
+    interfaces = var.l3_zone1_eth
     enable_user_id = true
 
     lifecycle {
@@ -66,12 +63,9 @@ resource "panos_zone" "l3_zone1" {
 
 
 resource "panos_zone" "l3_zone2" {
-
     name = var.l3_zone2
     mode = "layer3"
-    interfaces = [
-        var.l3_zone2_eth[0],
-    ]
+    interfaces = var.l3_zone2_eth
     enable_user_id = true
 
     lifecycle {
