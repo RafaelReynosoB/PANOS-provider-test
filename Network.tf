@@ -1,3 +1,4 @@
+#Defining a resource to create all L3 needed interfaces through the variables
 resource "panos_ethernet_interface" "l3_interface" {
     count = length(var.l3_interface)
 
