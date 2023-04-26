@@ -1,29 +1,21 @@
-##OBJECTS DEFINITION
+#Objects definition and resource creation
 variable "ip_objects" {
   type        = list(string)
   description = "All IP-Netmask objects to be created"
-  default     = ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"]
 }
-
 
 variable "ip_range_objects" {
   type        = list(string)
   description = "All IP Range objects to be created"
-  default     = ["10.0.0.25-10.0.0.35"]
 }
-
 
 variable "fqdn_objects" {
   type        = list(string)
   description = "All FQDN objects to be created"
-  default     = ["google.com", "brideitconsulting.com"]
 }
 
 
-
-
-##OBJECTS CREATION
-##Creating all IP-Netmask objects through one terraform resource
+#Resource to create all IP-Netmask objects
 resource "panos_address_object" "custom_ip_objects" {
     count = length(var.ip_objects)
     
@@ -37,8 +29,7 @@ resource "panos_address_object" "custom_ip_objects" {
     
 }
 
-
-##Creating all FQDN objects through one terraform resource
+#Resource to create all FQDN objects
 resource "panos_address_object" "custom_fqdn_objects" {
     count = length(var.fqdn_objects)
 
@@ -53,8 +44,7 @@ resource "panos_address_object" "custom_fqdn_objects" {
 }
 
 
-
-##Creating all FQDN objects through one terraform resource
+#Resource to create all IP-Range objects
 resource "panos_address_object" "custom_ip_range_objects" {
     count = length(var.ip_range_objects)
 

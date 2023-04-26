@@ -1,4 +1,20 @@
-#Defining a resource to create all L3 needed interfaces through the variables
+##L3 Interface variables and resource definition 
+variable "l3_interface" {
+  type = list(string)
+  description = "Layer 3 type interface"
+}
+
+variable "l3_interface_ip" {
+  type = list(list(string))
+  description = "Interface's IPs"
+}
+
+variable "l3_interface_comment" {
+  type = list(string)
+  description = "Comments added to the L3 Interfaces"
+}
+
+
 resource "panos_ethernet_interface" "l3_interface" {
     count = length(var.l3_interface)
 
