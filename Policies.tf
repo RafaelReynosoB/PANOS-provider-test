@@ -72,8 +72,11 @@ resource "panos_security_policy" "security_rules" {
         description = "Catch all allow rule configured through Terraform"
     }
 
-    depends_on = [panos_address_object.custom_fqdn_objects, panos_address_object.custom_ip_objects]
 
+
+    lifecycle {
+        create_before_destroy = true
+    }
 }
 
 
