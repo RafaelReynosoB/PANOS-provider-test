@@ -60,6 +60,9 @@ resource "panos_address_object" "custom_ip_range_objects" {
 
 
 
+
+
+
 ##Creating Objects Groups
 resource "panos_address_group" "rfc_1918" {
 
