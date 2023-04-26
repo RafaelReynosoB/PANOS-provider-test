@@ -1,9 +1,11 @@
-resource "panos_ethernet_interface" "l3_interfaces" {
-    name = "ethernet1/7"
+resource "panos_ethernet_interface" "l3_interface" {
+    count = length(var.l3_interface)
+
+    name = var.l3_interface[count.index]
     vsys = "vsys1"
     mode = "layer3"
-    static_ips = ["10.1.1.1/24"]
-    comment = "Internal Traffic"
+    static_ips =[var.l3_interface_ip[count.index]]
+    comment = var.l3_interface_comment[count.index]
 
     lifecycle {
         create_before_destroy = true
