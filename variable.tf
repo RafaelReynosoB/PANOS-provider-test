@@ -6,7 +6,7 @@ variable "l3_interface" {
 
 
 variable "l3_interface_ip" {
-  type = list(string)
+  type = list(list(string))
   description = "Interface's IPs"
 }
 
