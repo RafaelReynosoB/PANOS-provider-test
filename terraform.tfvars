@@ -19,3 +19,7 @@ l3_zone2_eth = [ "ethernet1/8" ]
 
 
 ########## Device Tab ##########
+ldap_name = [ "LDAP-Server-1" ]
+ldap_base_dn = [ "BaseDN" ]
+ldap_bind_dn = [ "BindDN" ]
+ldap_password = [ "Secret" ]
